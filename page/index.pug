@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+  head
+    title RQ
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', href='/favicon.ico')
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300', rel='stylesheet', type='text/css')
+    link(href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css", rel="stylesheet", integrity="sha384-2mX2PSpkRSXLQzmNzH3gwK6srb06+OfbDlYjbog8LQuALYJjuQ3+Yzy2JIWNV9rW", crossorigin="anonymous")
+    link(rel="stylesheet", href="/page.css", media="screen", title="page style", charset="utf-8")
+    script(src='https://code.jquery.com/jquery-2.2.4.min.js', integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=', crossorigin='anonymous')
+    script(src='https://code.jquery.com/color/jquery.color-2.1.2.min.js', integrity='sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE=', crossorigin='anonymous')
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/i18next/3.3.1/i18next.js')
+  body(data-spy="scroll" data-target=".navbar" data-offset="75")
+    include ./templates/0nav.pug
+    include ./templates/1headerSection.pug
+    include ./templates/2homeSection.pug
+    include ./templates/3aboutSection.pug
+    include ./templates/4resumeSection.pug
+    include ./templates/5workSection.pug
+    include ./templates/6contactSection.pug
+    script(src="/bundle.js", charset="utf-8")

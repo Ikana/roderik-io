@@ -1,0 +1,35 @@
+nav.navbar.navbar-inverse.navbar-fixed-top#navbar
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='#').hidden-md.hidden-sm.hidden-xs
+        img(src="/resources/rurik.svg", alt="rurik").logo.hidden-md-down
+    div
+      #myNavbar.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='#header-section')
+              .inner.i18n(data-i18n="nav.home")
+          li
+            a(href='#about-section')
+              .inner.i18n(data-i18n="nav.about")
+          li
+            a(href='#resume-section')
+              .inner.i18n(data-i18n="nav.resume")
+          li
+            a(href='#work-section')
+              .inner.i18n(data-i18n="nav.work")
+          li
+            a(href='#contact-section')
+              .inner.i18n(data-i18n="nav.contact")
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+              .inner.i18n(data-i18n="nav.lang")
+            ul.dropdown-menu
+              li
+                a.first.dropdown EN
+              li
+                a.second.dropdown DE

@@ -1,0 +1,56 @@
+#work-section
+  section
+    .container
+      .row
+        h2(data-i18n="proyects.title").col-sm-12.text-center
+      .row
+        .col-sm-8
+          h4 Showcase
+          .row
+            .row
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    h3.i18n(data-i18n="proyects.showcase.proj1.title").panel-title
+                  .panel-body
+                    img(src="/resources/itron.png", alt="itron imagen").img-responsive
+                    p.i18n(data-i18n="proyects.showcase.proj1.desc")
+
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    h3.i18n(data-i18n="proyects.showcase.proj2.title").panel-title
+                  .panel-body
+                    img(src="/resources/graviton.png", alt="itron imagen").img-responsive
+                    p.i18n(data-i18n="proyects.showcase.proj2.desc")
+            .row
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    h3.i18n(data-i18n="proyects.showcase.proj3.title").panel-title
+                  .panel-body
+                    img(src="/resources/electron.png", alt="itron imagen").img-responsive
+                    p.i18n(data-i18n="proyects.showcase.proj3.desc")
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    h3.i18n(data-i18n="proyects.showcase.proj4.title").panel-title
+                  .panel-body
+                    img(src="/resources/map.png", alt="itron imagen").img-responsive
+                    p.i18n(data-i18n="proyects.showcase.proj4.desc")
+            .row
+              .col-sm-6
+                .panel.panel-default
+                  .panel-heading
+                    h3.i18n(data-i18n="proyects.showcase.proj5.title").panel-title
+                  .panel-body
+                    p.i18n(data-i18n="proyects.showcase.proj5.desc")
+
+        .col-sm-4
+          h4(data-i18n="proyects.repos.title").i18n
+          table.table
+            thead
+              tr
+                th.i18n(data-i18n="proyects.repos.url")
+                th.i18n(data-i18n="proyects.repos.name")
+            tbody#insert-repo-selector

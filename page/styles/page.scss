@@ -1,0 +1,175 @@
+@import 'color';
+
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus{
+  background-color: $cool-yellow;
+  color: #000;
+}
+.navbar-inverse .navbar-toggle .icon-bar{
+  background-color: $cool-yellow;
+}
+.dropdown-menu{
+  background-color: $cool-yellow;
+  color: #000;
+  box-shadow: none;
+  border-radius: initial;
+  &>li>a {
+    color: #000;
+    &:hover , &:focus {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  position: relative;
+  color: #000;
+
+  font-size: 16px;
+  line-height: 32px;
+}
+section {
+  padding-bottom: 2em;
+}
+
+.resume-right h5:before {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  position: absolute;
+  border: 2px solid #ffd504;
+  background-color: #f7f7f7;
+  left: -47px;
+  content: '';
+  top: 14px;
+}
+
+.resume-right h5.first:before {
+  background-color: $cool-yellow;
+}
+
+.resume-right:before {
+    background-color: #ffd504;
+    opacity: .5;
+    content: '';
+    height: calc(100%);
+    width: 2px;
+    position: absolute;
+    left: -40px;
+    top: 25px;
+}
+
+  .resume-right.last:before {
+      height: calc(100% - 25px);
+  }
+
+
+
+#home-section {
+  padding:4em;
+  .main{
+    font-weight: 700;
+    font-size: 2.5em;
+    padding-bottom: 1em;
+  }
+  .sub {
+    color: #777;
+    font-weight: 400;
+  }
+}
+
+#resume-section {
+    background-color: #f7f7f7;
+}
+#work-section {}
+#contact-section {
+  a{
+    color: #fff;
+    &:hover, &:focus{
+      color: $cool-yellow;
+    }
+  }
+  padding-top: 2em;
+  background-color: #000;
+  color: #fff;
+  .logo-c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .logo{
+      height: 3em;
+    }
+  }
+}
+
+#header-section{
+  background: url('/resources/immtuble.jpg') no-repeat fixed;
+  width: 100vw; /*or your image's width*/
+  height: 700px; /*or your image's height*/
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .name{
+    color: $cool-yellow;
+    font-size: 7em;
+    font-weight: 700;
+  }
+  .tittle{
+    font-size: 2em;
+    color: #fff;
+    padding-top: 2em;
+  }
+
+}
+.svg-logo{
+  height: 24px;
+}
+.navbar-inverse{
+  .logo{
+    height: 38px;
+  }
+  background:rgba(0,0,0,0);
+  box-shadow: none;
+  border: none;
+  font-weight: 400;
+  font-size: 1.1em;
+  .navbar-nav>.active>a:focus{
+    background-color: transparent;
+    color: $cool-yellow;
+  }
+  .navbar-nav>li.active{
+    a {
+      color: $cool-yellow;
+      background-color: transparent;
+      .inner{
+        border-bottom: 2px solid $cool-yellow;
+        }
+      &:hover{
+        background-color: transparent;
+        color: $cool-yellow;
+      }
+    }
+
+  }
+  .navbar-nav>li>a{
+      color: #fff;
+      margin: 0 1.5em;
+      .inner{
+
+        padding: 0.2em;
+      }
+      &:hover{
+        .inner{
+          border-bottom: 2px solid $cool-yellow;
+        }
+        color: $cool-yellow;
+      }
+  }
+
+}
