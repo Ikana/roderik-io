@@ -42,7 +42,7 @@ page/bundle.js.map
 
 #Sass generated css
 page/page.css
-
+page/index.html
 .DS_Store
 
 deploy
