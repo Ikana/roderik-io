@@ -5,10 +5,32 @@ const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const browserSync = require('browser-sync');
 const webpack = require('webpack-stream');
+const del = require('del');
+
+const imagemin = require('imagemin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
+const svgmin = require('gulp-svgmin');
 
 gulp.task('deploy',(cb)=>{
-  runSequence('webpack','sass','copy','copy-res',cb);
+  runSequence('clean','webpack','pug','sass','copy','copy-res','svg',cb);
 });
+
+gulp.task('svg',()=>{
+  return gulp.src('page/resources/**/*.svg')
+    .pipe(svgmin())
+    .pipe(gulp.dest('./deploy/resources'));
+});
+
+gulp.task('dev',(cb)=>{
+  runSequence('clean',['pug','sass'],'webpack','serve',cb);
+});
+
+gulp.task('clean',(cb)=>{
+  del(['deploy','page/bundle.js','page/page.css','page/index.html']).then(()=>{
+    cb();
+  });
+})
 
 gulp.task('copy',()=>{
   return gulp.src(['page/favicon.ico','page/bundle.js','page/page.css',
@@ -16,16 +38,21 @@ gulp.task('copy',()=>{
 
 });
 
-gulp.task('copy-res',()=>{
+gulp.task('copy-res',(cb)=>{
 
-  return gulp.src('page/resources/**/*')
-  .pipe(gulp.dest('deploy/resources'));
+  imagemin(['page/resources/*.{jpg,png}'], 'deploy/resources', {
+  	plugins: [
+  		imageminMozjpeg(),
+  		imageminPngquant()
+  	]
+  }).then(files => {
+    cb();
+  }).catch(err =>{
+    console.error(err);
+  });
 
 });
 
-gulp.task('dev',(cb)=>{
-  runSequence(['pug','sass'],'webpack','serve',cb);
-});
 
 gulp.task('webpack', ()=>{
 

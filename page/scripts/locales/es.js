@@ -12,15 +12,14 @@ export default {
       title: "...ingeniero y bailarin amateur.",
       about: "SOBRE MI",
       hi : "Hola!",
-      aboutContent: "Mi nombre es Joaquin Rodrigo Quezada soy un desarrollador"
-      + " apasionado con mas de 4 años de experencia en el desarrollo,"
-      + " enfocado en realizar applicaciones de stack completo. Cuando "
-      + "comienzo un nuevo proyecto siempre me esmero en usar el herramienta"
-      + " correcta para cada problema, si alguna de las herramientas que "
-      + " conozco no es la indicada para dicho problema, investigo sobre el "
-      + " estado del arte y que herramientas han usado personams mas intelegentes "
-      + " y con mas experencia que yo para resolver es mismo problema para asi"
-      + " agragarla a mi reportorio.",
+      aboutContent: `Mi nombre es Joaquin Rodrigo Quezada, soy un desarrollador
+      apasionado con mas de 4 años de experiencia en el desarrollo de aplicaciones
+      a la medida. enfocado principalmente en realizar aplicaciones de stock completo.
+      Cuándo comienzo un nuevo proyecto, siempre me esmero en usar las herramientas
+      correctas para cada problema; en caso de que alguna de las herramientas que
+      conozco no sea la indicada para abordar un determinado problema, investigo
+      sobre el estado del arte y las herramientas que han sido usadas para resolver
+      ese tipo de problemas, incorporándolas a mi conocimiento y experiencia.`,
       tech: 'Tecnologias',
       node: 'Para desarrollo de backends principalmente con express',
       electron : 'Para desarrollo de applicaciones desktop con tecnologias web',
@@ -35,26 +34,28 @@ export default {
       cv: "CV",
       job1:{
         title: "Pasante",
-        company: "En Delta Wise Consultores",
-        desc: "Traduccion de documentos tecnicos de español a ingels y vise versa Webmaster",
+        company: "Delta Wise Consultores",
+        desc: `Traducción de documentos técnicos de español a ingles e ingles a español y Webmaster.`,
         time: '2 años',
         years: '2011-2013'
       },
       job2:{
         title: "Ingeniero de Desarrollo Jr",
-        company: "En Paradox Technologies",
-        desc: "Desarrollo y mantenimento de appliacaciones para terminales de punto de venta,"
-        + " en varios lenguajes: C, C++ , C# y java. Desarrollo y mantenimento de applicaciones "
-        + "para autorizacion de de transacciones y actualizacion de terminales usando java y C#",
+        company: "Paradox Technologies",
+        desc: `Desarrollo y mantenimiento de aplicaciones para terminales de punto
+        de venta, en varios lenguajes: C, C++, C# y Java. Desarrollo y mantenimiento
+        de aplicaciones para autorización de transacciones y actualización de
+        terminales usando Java y  C#.`,
         time: '1 año',
         years: '2014-2015'
       },
       job3:{
         title: "Ingeniero de Proyectos",
-        company: "Ingeniero de Proyectos",
-        desc: "Desarrollo y diseño de applicaciones full-stack con angular y y react para el front end y mongo "
-        + "y express para el back end con autenticacion usando jwt. Desarrollo y diseño de applicaciones"
-        + "de escritorio usando tecnologias web mediante el framework de github electron",
+        company: "Drakkar systems & electronics",
+        desc: `Desarrollo y diseño de aplicaciones full-stack con angular y react
+        para el front end, mongo y express ara el back end con autenticación usando
+        jwt. Desarrollo y diseño de aplicaciones de escritorio usando tecnologías
+        web mediante el framework de github: electron.`,
         time: '1 año',
         years: '2015-'
       }
