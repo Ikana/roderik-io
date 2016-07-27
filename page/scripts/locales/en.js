@@ -9,16 +9,16 @@ export default {
       lang : 'EN'
     },
     about: {
-      title: "...engineer y amateur dancer.",
+      title: "...engineer & amateur dancer.",
       about: "ABOUT ME",
       hi : "Hello!",
-      aboutContent: "Mi name is Joaquin Rodrigo Quezada, I am a passionate developer "
-      + "with more than 4 years experience on this domain focused on bringing to light "
-      + "full-stack applications. When I start a new proyect I always stribe towards "
-      + "using the right tool for the job, but if any of the tools that i know of "
-      + "is the correct one, I research over the state of the art and about what"
-      + "other more acomplished programers have used to solve the problem, so"
-      + "I can add it to my repertoire.",
+      aboutContent: `My name is Joaquin Rodrigo Quezada, I am a passionate developer
+        with more than 4 years experience on developing tailor made applications,
+        focusing on full-stack applications. When I start a new project I
+        always strive towards using the right tool for the job, but if any of the
+        tools that i know of  is the correct one, I research over the state of the
+        art and about what other more accomplished programers have used to solve
+        the problem, so I can add it to my repertoire.`,
       tech: 'Thechnologies',
       node: 'For back end and tooling mainly with express and gulp',
       electron : 'Para desarrollo de applicaciones desktop con tecnologias web',
