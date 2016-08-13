@@ -3,7 +3,7 @@ export default {
     nav: {
       home: 'Home',
       about: 'About',
-      resume: 'Experencia',
+      resume: 'Experience',
       work: 'Work',
       contact: 'Contact',
       lang : 'EN'
