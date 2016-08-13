@@ -57,7 +57,19 @@ export default {
         jwt. Desarrollo y diseño de aplicaciones de escritorio usando tecnologías
         web mediante el framework de github: electron.`,
         time: '1 año',
-        years: '2015-'
+        years: '2015-2016'
+      },
+      job4:{
+        title: "Front-end Developer",
+        company: "HolaGus",
+        desc: `Asegurar la calidad de la experiencia del usuario final, liderazgo
+        de proyectos desde el road mapping hasta la ejecución y el seguimiento,
+        liderar la elección del tooling de frontend para los desarrollo de las
+        herramientas internas y de las demás propiedades de HolaGus y diseño de
+        la arquitectura de frontend y de las interfaces de usuario para Web y
+        mobile web.`,
+        time: 'Actual',
+        years: '2016-'
       }
     },
     proyects: {

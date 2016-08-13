@@ -55,6 +55,17 @@ export default {
         + "with the framework from github electron.",
         time: '1 year',
         years: '2015-'
+      },
+      job4:{
+        title: "Front-end Developer",
+        company: "HolaGus",
+        desc: `Ensure a quality experience for the end user, leading of projects
+         from the road mapping to the execution and tracking, lead the choice of
+         tooling for the front-end  for the development of the internal tools of
+         HolaGus and any other holdings and design of the front-end architecture
+         and user interface for web and mobile web.`,
+        time: 'Current',
+        years: '2016-'
       }
     },
     proyects: {
