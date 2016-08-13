@@ -54,7 +54,7 @@ export default {
         + "mongo and express using jwt for authentication on both levels, Develpment and design of desktop applications"
         + "with the framework from github electron.",
         time: '1 year',
-        years: '2015-'
+        years: '2015-2016'
       },
       job4:{
         title: "Front-end Developer",
