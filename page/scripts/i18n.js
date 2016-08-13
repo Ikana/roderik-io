@@ -24,7 +24,6 @@ $('.dropdown-menu a').click(function(){
 
 import es from './locales/es.js';
 import en from './locales/en.js';
-console.log(es);
 
 i18next.init({
   lng: 'es',

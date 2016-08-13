@@ -1,7 +1,6 @@
 $.ajax('https://api.github.com/search/repositories?q=user:ikana&per_page=10',
 {
   success: function(res){
-    console.log(res);
 
     res.items.reduce(function(sel,item){
       var repo = '<tr> <td> <a href="';
