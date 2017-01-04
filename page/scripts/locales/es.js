@@ -37,7 +37,7 @@ export default {
         company: "Delta Wise Consultores",
         desc: `Traducción de documentos técnicos de español a ingles e ingles a español y Webmaster.`,
         time: '2 años',
-        years: '2011-2013'
+        years: 'Jul 2011 - Nov 2013'
       },
       job2:{
         title: "Ingeniero de Desarrollo Jr",
@@ -47,7 +47,7 @@ export default {
         de aplicaciones para autorización de transacciones y actualización de
         terminales usando Java y  C#.`,
         time: '1 año',
-        years: '2014-2015'
+        years: 'Dec 2014 - Jul 2015'
       },
       job3:{
         title: "Ingeniero de Proyectos",
@@ -57,10 +57,10 @@ export default {
         jwt. Desarrollo y diseño de aplicaciones de escritorio usando tecnologías
         web mediante el framework de github: electron.`,
         time: '1 año',
-        years: '2015-2016'
+        years: 'Aug 2015 - Jul 2016'
       },
       job4:{
-        title: "Front-end Developer",
+        title: "Lead Front-end Developer",
         company: "HolaGus",
         desc: `Asegurar la calidad de la experiencia del usuario final, liderazgo
         de proyectos desde el road mapping hasta la ejecución y el seguimiento,
@@ -69,7 +69,13 @@ export default {
         la arquitectura de frontend y de las interfaces de usuario para Web y
         mobile web.`,
         time: 'Actual',
-        years: '2016-'
+        years: 'Aug 2016 - Nov 2016'
+      },
+      job5:{
+        title: "Back-end Developer",
+        company: "SocialDecode",
+        desc: `Desarrollo de apis con node js usando hapi como framework y varias bases de datos no relacionales como Cassandra.`,
+        years: 'Dic 2016'
       }
     },
     proyects: {
@@ -90,7 +96,7 @@ export default {
         },
         proj4:{
           title:'Backbone Map',
-          desc: 'Projecto final para el fron end web development nano degree.'
+          desc: 'Proyecto final para el fron end web development nano degree.'
         },
         proj5:{
           title:'Este sitio',

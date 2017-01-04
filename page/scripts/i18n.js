@@ -1,6 +1,16 @@
 import jqueryI18next from 'jquery-i18next'
 import i18next from 'i18next';
 
+
+$(window).load(function() {
+
+  console.log('loadDeferredStyles',location.hash)
+  i18next.changeLanguage(location.hash, (err, t) => {
+    $(".i18n").localize();
+  })
+
+});
+
 $('.dropdown-menu a').click(function(){
 
   let lang = this.innerHTML.toLowerCase();
@@ -25,8 +35,12 @@ $('.dropdown-menu a').click(function(){
 import es from './locales/es.js';
 import en from './locales/en.js';
 
+const hash = location.hash.replace('#','')
+
+const initLocale = hash === 'en' ? 'en' : 'es'
+
 i18next.init({
-  lng: 'es',
+  lng: initLocale,
   resources: {
     es: es,
     en: en,

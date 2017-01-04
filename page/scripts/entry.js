@@ -3,7 +3,9 @@ require("./scroll.js");
 require("./i18n.js");
 
 $(window).load(function() {
-  $(".se-pre-con").fadeOut("slow");
+  $(".se-pre-con").fadeOut("slow")
+
+
 });
 
 var loadDeferredStyles = function() {

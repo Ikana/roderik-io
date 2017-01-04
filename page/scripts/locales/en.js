@@ -36,7 +36,7 @@ export default {
         company: "Delta Wise Consultores",
         desc: "Document technical document translation and webmaster.",
         time: '2 years',
-        years: '2011-2013'
+        years: 'Jul 2011 - Nov 2013'
       },
       job2:{
         title: "Jr Developer",
@@ -45,7 +45,7 @@ export default {
         + "en various languages: C, C++, C# and java, Design and maintinacne of applicatoins"
         + "for transaction authorization and updating terminals using java y C#.",
         time: '1 year',
-        years: '2014-2015'
+        years: 'Dec 2014 - Jul 2015'
       },
       job3:{
         title: "Proyect Engineer",
@@ -54,7 +54,7 @@ export default {
         + "mongo and express using jwt for authentication on both levels, Develpment and design of desktop applications"
         + "with the framework from github electron.",
         time: '1 year',
-        years: '2015-2016'
+        years: 'Aug 2015 - Jul 2016'
       },
       job4:{
         title: "Front-end Developer",
@@ -65,7 +65,13 @@ export default {
          HolaGus and any other holdings and design of the front-end architecture
          and user interface for web and mobile web.`,
         time: 'Current',
-        years: '2016-'
+        years: 'Aug 2016 - Nov 2016'
+      },
+      job5:{
+        title: "Back-end Developer",
+        company: "SocialDecode",
+        desc: `Development of apis with node js using the hapi framework and various non-sql databases such as cassandra`,
+        years: 'Dec 2016'
       }
     },
     proyects: {
