@@ -4,7 +4,7 @@ export default {
       home: 'Inicio',
       about: 'Sobre Mi',
       resume: 'Experencia',
-      work: 'Projectos',
+      work: 'Proyectos',
       contact: 'Contacto',
       lang : 'ES'
     },
