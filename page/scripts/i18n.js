@@ -37,7 +37,7 @@ import en from './locales/en.js';
 
 const hash = location.hash.replace('#','')
 
-const initLocale = hash === 'en' ? 'en' : 'es'
+const initLocale = hash === 'en' ? 'es' : 'en'
 
 i18next.init({
   lng: initLocale,

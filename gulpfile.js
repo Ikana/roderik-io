@@ -13,7 +13,7 @@ const imageminPngquant = require('imagemin-pngquant');
 const svgmin = require('gulp-svgmin');
 
 gulp.task('deploy',(cb)=>{
-  runSequence('clean','webpack','pug','sass','copy','copy-res','svg',cb);
+  runSequence('clean','webpack','pug','sass','copy','copy-res','svg','copy-o-res',cb);
 });
 
 gulp.task('svg',()=>{
@@ -21,6 +21,11 @@ gulp.task('svg',()=>{
     .pipe(svgmin())
     .pipe(gulp.dest('./deploy/resources'));
 });
+
+gulp.task('copy-o-res',()=> {
+  return gulp.src(['page/resources/loading.gif'])
+    .pipe(gulp.dest('deploy/resources'))
+})
 
 gulp.task('dev',(cb)=>{
   runSequence('clean',['pug','sass'],'webpack','serve',cb);
