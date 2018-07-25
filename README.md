@@ -1,1 +1,3 @@
-# roderik-io
+# static-site
+
+Personal static site boilerplate

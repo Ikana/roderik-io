@@ -1,28 +1,22 @@
 // @flow
-
+const webpack = require('webpack')
+const {optimize} = webpack
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
 
 module.exports = {
   entry: {
-    main: ['./build/browserSync.js', './src/entry.js']
+    main: `./src/entry.js`
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: `${__dirname}/site`,
     chunkFilename: '[name].bundle.js'
   },
   devtool: 'source-map',
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
+      { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, loader: [ 'style-loader', 'css-loader' ] },
       { test: /\.pug$/, loader: 'pug-loader' }
     ]
   },
@@ -30,6 +24,12 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   plugins: [
+    new optimize.UglifyJsPlugin({
+      sourceMap: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'views/index.pug',

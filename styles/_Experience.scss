@@ -1,0 +1,36 @@
+.Experience {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  li {
+    width: 100%;
+    display: flex;
+  }
+  &-date {
+    width: 15%;
+    padding: 0 2rem 0 0;
+  }
+  &-title {
+    margin-top: 0;
+    &--click {
+      cursor: pointer;
+    }
+    &--click:hover {
+
+      border-bottom: 3px solid $js-yello;
+      margin-bottom: calc(1rem - 1px);
+    }
+  }
+  &-dets {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    border-left: 0.5rem solid black;
+  }
+}
+.halfs {
+  display: flex;
+  flex-direction: row;
+  .half {
+    width: 50%;
+  }
+}

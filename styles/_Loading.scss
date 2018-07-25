@@ -1,0 +1,29 @@
+.Loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    z-index: 3;
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    opacity: 1;
+    &--fadein {
+        animation: fade 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    &--fadeout {
+        animation: fade-out 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+}
+
+@keyframes fade {
+    0%{ opacity: 0 }
+    50% { opacity: 1 }
+}
+
+@keyframes fade-out {
+    0%{ opacity: 1 }
+    100%{ opacity: 0}
+}

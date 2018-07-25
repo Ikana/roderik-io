@@ -1,103 +1,174 @@
-const gulp = require('gulp');
-const runSequence = require('run-sequence');
-const pug = require('gulp-pug');
-const sass = require('gulp-sass');
-const eslint = require('gulp-eslint');
-const browserSync = require('browser-sync');
-const webpack = require('webpack-stream');
-const del = require('del');
+// @flow
 
-const imagemin = require('imagemin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
-const svgmin = require('gulp-svgmin');
+const gutil = require('gulp-util')
+const runSequence = require('run-sequence')
+const del = require('del')
+const gulp = require('gulp')
+const combine = require('stream-combiner2')
+const sass = require('node-sass')
+const browserSync = require('browser-sync')
+const webpack = require('webpack')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const merge = require('merge-stream')
+const webpackstream = require('webpack-stream')
+const ansiHTML = require('./build/ansiHTML')
+const fs = require('fs')
+const util = require('util')
+const path = require('path')
+const mime = require('mime-types')
 
-gulp.task('deploy',(cb)=>{
-  runSequence('clean','webpack','pug','sass','copy','copy-res','svg','copy-o-res',cb);
-});
+const writeFile = util.promisify(fs.writeFile)
 
-gulp.task('svg',()=>{
-  return gulp.src('page/resources/**/*.svg')
-    .pipe(svgmin())
-    .pipe(gulp.dest('./deploy/resources'));
-});
+const bs = browserSync.create()
 
-gulp.task('copy-o-res',()=> {
-  return gulp.src(['page/resources/loading.gif'])
-    .pipe(gulp.dest('deploy/resources'))
+gulp.task('dev', (done) => {
+  runSequence('del', 'copy', 'sass', 'serve', done)
 })
 
-gulp.task('dev',(cb)=>{
-  runSequence('clean',['pug','sass'],'webpack','serve',cb);
-});
-
-gulp.task('clean',(cb)=>{
-  del(['deploy','page/bundle.js','page/page.css','page/index.html']).then(()=>{
-    cb();
-  });
+gulp.task('deploy', (done) => {
+  runSequence('del', 'webpack', 'copy', 'sass', done)
 })
 
-gulp.task('copy',()=>{
-  return gulp.src(['page/favicon.ico','page/bundle.js','page/page.css',
-  'page/index.html']).pipe(gulp.dest('deploy'));
+gulp.task('webpack', () => {
+  const task = combine.obj([
+    gulp.src('src/entry.jsx'),
+    webpackstream(require('./webpack.config.prod.js'), webpack),
+    gulp.dest('site')])
+  return task.on('error', handleError)
+})
 
-});
+let webPackerror = ''
 
-gulp.task('copy-res',(cb)=>{
-
-  imagemin(['page/resources/*.{jpg,png}'], 'deploy/resources', {
-  	plugins: [
-  		imageminMozjpeg(),
-  		imageminPngquant()
-  	]
-  }).then(files => {
-    cb();
-  }).catch(err =>{
-    console.error(err);
-  });
-
-});
-
-
-gulp.task('webpack', ()=>{
-
-  return gulp.src('page/scripts/entry.js')
-    .pipe(webpack( require('./webpack.config.js')))
-    .pipe(gulp.dest('page'));
-
-});
-
-gulp.task('serve',()=>{
-
-  browserSync.init({
-    server: "./page"
-  });
-
-  gulp.watch("page/styles/**/*.scss", ['sass']);
-  gulp.watch("page/**/*.pug", ['pug']);
-  gulp.watch("page/scripts/**/*.js",['webpack']);
-
-  gulp.watch("page/**/*.html").on('change', browserSync.reload);
-  gulp.watch("page/**/*.css").on('change', browserSync.reload);
-  gulp.watch("page/bundle.js").on('change', browserSync.reload);
-});
-
-gulp.task('pug',()=>{
-  return gulp.src('page/index.pug')
-  .pipe(pug())
-  .pipe(gulp.dest('page'));
-});
-
-gulp.task('sass',()=>{
-
-  var outputStyle;
-  if(JSON.parse(process.env.PROD_ENV || '0')){
-    outputStyle = 'compressed'
+function reporter (reporterOptions) {
+  const { state, stats, options } = reporterOptions
+  if (state) {
+    var displayStats = (!options.quiet && options.stats !== false)
+    if (displayStats && !(stats.hasErrors() || stats.hasWarnings()) && options.noInfo) {
+      displayStats = false
+    }
+    if (displayStats) {
+      options.log(stats.toString(options.stats))
+    }
+    if (!options.noInfo && !options.quiet) {
+      var msg = 'Compiled successfully.'
+      if (stats.hasErrors()) {
+        msg = 'Failed to compile.'
+      } else if (stats.hasWarnings()) {
+        msg = 'Compiled with warnings.'
+      }
+      options.log('webpack: ' + msg)
+    }
   } else {
-    outputStyle = 'nested';
+    options.log('webpack: Compiling...')
   }
 
-  return gulp.src('page/styles/page.scss')
-  .pipe(sass({outputStyle:'compressed'}))
-  .pipe(gulp.dest('page'));
-});
+  if (stats.hasErrors()) {
+    webPackerror = ansiHTML(stats.toString(options.stats))
+  } else {
+    webPackerror = ''
+  }
+}
+
+gulp.task('serve', done => {
+  const bundler = webpack(require('./webpack.config.js'))
+
+  const webpackDevMiddlewareInstance = webpackDevMiddleware(bundler, {
+    noInfo: true,
+    reporter
+  })
+  const mdW = (req, res, next) => {
+    const sendIndex = () => {
+      const filename = path.join(bundler.outputPath, 'index.html')
+      bundler.outputFileSystem.readFile(filename, (err, result) => {
+        if (err) {
+          return next(err)
+        }
+        res.write(result)
+        res.end()
+      })
+    }
+    if (req._parsedUrl.pathname === '/') {
+      sendIndex()
+    } else {
+      const filepath = path.join(__dirname, 'site', decodeURI(req._parsedUrl.pathname))
+      if (fs.existsSync(filepath))  {
+        fs.readFile(filepath, (err, result) => {
+          if (err) {
+            return next(err)
+          }
+          // res.setHeader('Content-Type', 'text/plain')
+          res.setHeader('Content-Type', mime.lookup(filepath) || 'application/octet-stream')
+          res.write(result)
+          res.end()
+        })
+      } else {
+        sendIndex()
+      }
+    }
+  }
+  bs.init({
+    server: {
+      baseDir: 'site',
+      index: 'index.html',
+      middleware: [webpackDevMiddlewareInstance, mdW]
+    },
+    port: 7000,
+    ui: {
+      port: 7001
+    },
+    open: process.env.NODE_FIRST === true,
+    brower: 'Google Chrome Canary'
+  })
+
+  bs.emitter.on('init', function () {
+    bs.instance.io.sockets.on('connection', (client) => {
+      if (webPackerror) {
+        client.emit('react-error', webPackerror)
+      }
+    })
+  })
+  webpackDevMiddlewareInstance.waitUntilValid(() => {
+    gulp.watch('styles/**/*.scss', ['sass'])
+    gulp.watch(['assets/**/*', 'index.html'], ['copy'])
+    bundler.plugin('done', () => {
+      bs.reload()
+    })
+    done()
+  })
+})
+
+gulp.task('sass', (done) => {
+  sass.render({
+    file: 'styles/site.scss'
+  }, function (err, result) {
+    if (err) {
+      gutil.log(gutil.colors.magenta(err.toString()))
+      done()
+    } else {
+      writeFile('site/site.css', result.css, 'utf-8').then(() => {
+        bs.reload()
+        done()
+      })
+    }
+  })
+})
+
+gulp.task('del', done => {
+  del(['site', 'libdefs.js']).then(() => done())
+})
+
+gulp.task('copy', () => {
+  const taskAssest = combine.obj([
+    gulp.src('assets/**/*'),
+    gulp.dest('site'),
+    bs.stream()
+  ])
+
+  return merge(taskAssest).on('error', handleError)
+})
+
+function handleError (err) {
+  gutil.log(gutil.colors.magenta(err.toString()))
+
+  this.emit('end')
+}

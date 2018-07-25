@@ -1,0 +1,38 @@
+@import "normalize";
+@import "vars";
+@import "Hero";
+@import "Overlay";
+@import "section";
+@import "Experience";
+@import "Loading";
+@import "animate";
+
+body, html {
+    font-family: 'Lora', serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  &.alt{
+    color: $js-yello;
+  }
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
