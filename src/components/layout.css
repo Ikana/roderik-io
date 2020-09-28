@@ -621,4 +621,11 @@ pre tt:after {
   }
 }
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden; /* Hide scrollbars */
+}

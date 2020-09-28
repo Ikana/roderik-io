@@ -59,9 +59,6 @@ function Chuck() {
             canvas.width,
             canvas.height
           )
-          console.log(width)
-          console.log(height)
-          console.log(data.length)
 
           const coords = []
 
@@ -75,19 +72,17 @@ function Chuck() {
             return 0.5 - Math.random()
           })
 
-          console.log(coords)
-
           const getColorIndicesForCoord = (x, y, width) => {
             const red = y * (width * 4) + x * 4
             return [red, red + 1, red + 2, red + 3]
           }
-          console.log(SimplexNoise)
+
           const simplex = new SimplexNoise()
           for (const coord of coords) {
             let [medianR, medianG, medianB] = [0, 0, 0]
             const rawNoise = simplex.noise2D(coord[0] * 50, coord[1] * 50)
             const highNoise = Math.abs(rawNoise) * 0.8 + 0.8
-            const lowNoise = Math.abs(rawNoise) * 0.6 + 0.2
+            const lowNoise = Math.abs(rawNoise) * 0.6 + 0.3
 
             let backGroundNoise, foreGroundNoise
 
@@ -133,6 +128,7 @@ function Chuck() {
         height: "100vh",
         color: "white",
         padding: "4rem",
+        overflow: "hidden",
         fontFamily: "'Epilogue', sans-serif",
       }}
     >
