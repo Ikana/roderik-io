@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react"
 import * as SimplexNoise from "simplex-noise"
 
+import "./layout.css"
+
 function Chuck() {
   const canvasEl = useRef<HTMLCanvasElement | null>(null)
   const containerEl = useRef<HTMLDivElement | null>(null)
